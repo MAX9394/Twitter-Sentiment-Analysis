@@ -17,7 +17,6 @@ The consolidated notebook runs the complete workflow end to end: data loading, p
 - [Outputs](#outputs)
 - [Legacy scripts](#legacy-scripts)
 - [Notes and limitations](#notes-and-limitations)
-- [Credits and license](#credits-and-license)
 
 ## Overview
 
@@ -108,12 +107,11 @@ Optional dependencies:
 - `xgboost` — enables the XGBoost section
 - `tensorflow` — enables the logistic regression, MLP, LSTM, and CNN sections
 
-The legacy scripts in `code/` target Python 2.7 and older Keras/TensorFlow APIs. They are not required to run the notebook.
 
 ## Setup
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/MAX9394/Twitter-Sentiment-Analysis.git>
 cd twitter-sentiment-analysis
 
 python -m venv .venv
@@ -181,7 +179,7 @@ The entire `artifacts/` directory is generated and ignored by Git.
 
 ## Legacy scripts
 
-The `code/` directory contains the original model-by-model implementation. The scripts target Python 2.7, use hard-coded relative paths near the top of each file, and should be run from inside `code/`.
+The `code/` directory contains the original model-by-model implementation. Use hard-coded relative paths near the top of each file, and should be run from inside `code/`.
 
 Prepare the data first:
 
@@ -235,13 +233,3 @@ python majority-voting.py
 - The bundled results are from the NLTK sample corpus. Scores on a full, noisy tweet corpus will be lower and will depend heavily on the training data.
 - Sarcasm, mixed sentiment, and negation remain the main failure modes; the notebook's error analysis inspects the most confident mistakes.
 - The neural sections are optional and are skipped cleanly when TensorFlow is missing.
-- `dataset/glove-seeds.txt` is optional. When present, it seeds the embedding matrix; otherwise embeddings are initialized randomly and trained with the rest of the network.
-- The legacy scripts are Python 2 code provided as-is; some contain hard-coded paths or older library assumptions and may need small edits. Use the notebook as the maintained entry point.
-
-## Credits and license
-
-The original standalone implementation and project structure come from Abdul Fatir's [twitter-sentiment-analysis](https://github.com/abdulfatir/twitter-sentiment-analysis) project, which is MIT-licensed. The consolidated notebook, NLTK-based workflow, and additional analysis were developed for this project.
-
-The sample corpus is provided by NLTK's `twitter_samples`. The sentiment word lists are stored in `dataset/`.
-
-This project is released under the MIT License. See [LICENSE](LICENSE) for details.
